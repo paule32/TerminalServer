@@ -22,5 +22,5 @@
 
 ---
 
-- [Protokoll](https://github.com/TerminalServer/wiki/SprachVerwaltung.md)
+- [Protokoll](https://github.com/paule32/TerminalServer/wiki/SprachVerwaltung.md)
 
