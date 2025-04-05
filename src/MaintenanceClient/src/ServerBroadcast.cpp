@@ -1,0 +1,1 @@
+// ServerBroadcast.cpp – sendet Wartungsnachricht an Clients

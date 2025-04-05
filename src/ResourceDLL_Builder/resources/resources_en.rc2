@@ -1,0 +1,8 @@
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+#include "resource.h"
+
+STRINGTABLE
+BEGIN
+    IDS_SPLASH_LOADING "Loading application..."
+END

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingsDialog</class>
+ <widget class="QDialog" name="SettingsDialog">
+  <property name="windowTitle">
+   <string>Einstellungen</string>
+  </property>
+  <widget class="QLineEdit" name="editExportPath">
+   <property name="geometry"><rect><x>10</x><y>10</y><width>380</width><height>25</height></rect></property>
+   <property name="placeholderText"><string>Exportverzeichnis</string></property>
+  </widget>
+  <widget class="QPushButton" name="btnBrowse">
+   <property name="text"><string>...</string></property>
+   <property name="geometry"><rect><x>400</x><y>10</y><width>30</width><height>25</height></rect></property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

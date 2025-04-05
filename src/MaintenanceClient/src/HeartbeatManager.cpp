@@ -1,0 +1,1 @@
+// HeartbeatManager.cpp – enthält Heartbeat-Logik

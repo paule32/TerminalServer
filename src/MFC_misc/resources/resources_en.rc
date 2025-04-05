@@ -1,0 +1,7 @@
+// resources_en.rc – Englisch
+#define IDS_SPLASH_LOADING 1000
+
+STRINGTABLE
+BEGIN
+    IDS_SPLASH_LOADING "Loading application..."
+END

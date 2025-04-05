@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowTitle"><string>SSL-Zertifikatsverwaltung</string></property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry"><rect><x>10</x><y>10</y><width>780</width><height>500</height></rect></property>
+    <widget class="QWidget" name="tab_server">
+     <attribute name="title"><string>CA / Server</string></attribute>
+     <widget class="QPushButton" name="btnLoadCSRs">
+      <property name="text"><string>CSR-Dateien laden</string></property>
+      <property name="geometry"><rect><x>10</x><y>10</y><width>180</width><height>30</height></rect></property>
+     </widget>
+     <widget class="QPushButton" name="btnSignSelected">
+      <property name="text"><string>Zertifikat signieren</string></property>
+      <property name="geometry"><rect><x>200</x><y>10</y><width>180</width><height>30</height></rect></property>
+     </widget>
+     <widget class="QTableWidget" name="tableCSRs">
+      <property name="geometry"><rect><x>10</x><y>50</y><width>740</width><height>400</height></rect></property>
+          <widget class="QPushButton" name="btnExportCert">
+      <property name="text"><string>Zertifikat exportieren</string></property>
+      <property name="geometry"><rect><x>10</x><y>460</y><width>160</width><height>30</height></rect></property>
+     </widget>
+     <widget class="QPushButton" name="btnRevoke">
+      <property name="text"><string>Sperren</string></property>
+      <property name="geometry"><rect><x>180</x><y>460</y><width>100</width><height>30</height></rect></property>
+     </widget>
+     <widget class="QPushButton" name="btnUnrevoke">
+      <property name="text"><string>Freigeben</string></property>
+      <property name="geometry"><rect><x>290</x><y>460</y><width>100</width><height>30</height></rect></property>
+     </widget>
+    </widget>
+    </widget>
+    <widget class="QWidget" name="tab_clients">
+     <attribute name="title"><string>Clients</string></attribute>
+     <widget class="QTableWidget" name="tableClients">
+      <property name="geometry"><rect><x>10</x><y>10</y><width>740</width><height>440</height></rect></property>
+          <widget class="QPushButton" name="btnExportCert">
+      <property name="text"><string>Zertifikat exportieren</string></property>
+      <property name="geometry"><rect><x>10</x><y>460</y><width>160</width><height>30</height></rect></property>
+     </widget>
+     <widget class="QPushButton" name="btnRevoke">
+      <property name="text"><string>Sperren</string></property>
+      <property name="geometry"><rect><x>180</x><y>460</y><width>100</width><height>30</height></rect></property>
+     </widget>
+     <widget class="QPushButton" name="btnUnrevoke">
+      <property name="text"><string>Freigeben</string></property>
+      <property name="geometry"><rect><x>290</x><y>460</y><width>100</width><height>30</height></rect></property>
+     </widget>
+    </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
