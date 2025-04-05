@@ -19,3 +19,6 @@
 
 - [ ] Unterstützung für weitere Sprachen (z. B. Französisch)
 - [ ] Kontextmenü für Sprachumschaltung in Taskleiste
+
+---
+- [Protokoll](wiki/SprachVerwaltung.md)
