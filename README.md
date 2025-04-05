@@ -22,5 +22,5 @@
 
 ---
 
-- [Protokoll](https://github.com/paule32/TerminalServer/wiki/SprachVerwaltung.md)
+- [Protokoll: Sprach-Umschaltung](https://github.com/paule32/TerminalServer/wiki/SprachVerwaltung.md)
 
