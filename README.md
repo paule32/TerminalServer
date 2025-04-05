@@ -10,6 +10,9 @@ Dieses Projekt enthält Tools für die Arbeit mit OpenSSL, CSR-Verwaltung, TLS-V
 - [Zertifikatsverwaltung mit Qt5](certmanager-ui.md)
 - [OpenSSL & Test-CA Tipps](openssl-ca-tipps.md)
 
+
+[Protokoll](TLS_Zertifikats_Session_Doku.md)
+
 ---
 
 # 📋 Sprachmodul – Statusübersicht
