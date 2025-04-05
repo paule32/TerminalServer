@@ -21,4 +21,4 @@
 - [ ] Kontextmenü für Sprachumschaltung in Taskleiste
 
 ---
-- [Protokoll](wiki/SprachVerwaltung.md)
+- [Protokoll](TerminalServer/wiki/SprachVerwaltung.md)
