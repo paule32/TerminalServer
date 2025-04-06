@@ -23,7 +23,7 @@ jobs:
     - name: 📤 Baue Artefakt hochladen
       uses: actions/upload-artifact@v4
       with:
-        name: Release-Build
+        name: Windows 64-Bit MFC_TCP_Client_IP
         path: 'src/MFC_TCP_Client_IP/**/Release/*.exe'
 
 #https://github.com/paule32/TerminalServer/blob/main/src/MFC_TCP_Client_IP/MFC_TCP_Client_IP.sln
