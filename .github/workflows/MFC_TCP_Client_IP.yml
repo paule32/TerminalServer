@@ -30,6 +30,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Windows 64-Bit MFC_TCP_Client_IP.zip
-        path: 'release/MFC_TCP_Client_IP.zip'
+        path: 'MFC_TCP_Client_IP.zip'
 
 #https://github.com/paule32/TerminalServer/blob/main/src/MFC_TCP_Client_IP/MFC_TCP_Client_IP.sln
