@@ -26,16 +26,6 @@ jobs:
         copy src\MFC_TCP_Client_IP\**\Release\*.exe release\
         powershell Compress-Archive -Path release\* -DestinationPath MFC_TCP_Client_IP.zip
 
-    - name: 🚀 Release erstellen und ZIP hochladen
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: latest
-        name: Letzter Build
-        files: MFC_TCP_Client_IP.zip
-        overwrite: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     - name: 📤 Baue Artefakt hochladen
       uses: actions/upload-artifact@v4
       with:
