@@ -18,16 +18,34 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // ---------------------------------------------------------------------------------------
+#pragma once
 
-IDD_MAINDIALOG DIALOGEX 0, 0, 260, 140
-STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "TCP MFC Client mit IP"
-FONT 8, "MS Shell Dlg"
-BEGIN
-    LTEXT           "Name:",-1,10,10,30,10
-    EDITTEXT        IDC_EDIT_NAME,40,10,120,14
-    LTEXT           "Server-IP:",-1,10,30,40,10
-    EDITTEXT        IDC_EDIT_IP,60,30,120,14
-    PUSHBUTTON      "Senden",IDC_BUTTON_SENDNAME,190,10,60,14
-    LTEXT           "",IDC_STATIC_RESPONSE,10,60,230,14
-END
+# include "pch.h"
+
+#define WM_MYTHREAD_MESSAGE (WM_USER + 100)
+
+class CMainDlg : public CDialogEx
+{
+public:
+    CMainDlg(CWnd* pParent = nullptr);
+#ifdef AFX_DESIGN_TIME
+    enum { IDD = IDD_MAINDIALOG };
+#endif
+
+protected:
+    CEdit m_NameEdit;
+    CEdit m_IpEdit;
+    CStatic m_ResponseLabel;
+
+    virtual void PostNcDestroy() override;
+    virtual void DoDataExchange(CDataExchange* pDX);
+    
+    afx_msg void OnBnClickedSendName();
+    afx_msg LRESULT OnThreadMessage(WPARAM wParam, LPARAM lParam);
+    afx_msg void OnBnClickedClose();
+
+    static UINT ClientThreadProc(LPVOID pParam);
+
+    DECLARE_MESSAGE_MAP()
+};
+

@@ -19,12 +19,10 @@
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // ---------------------------------------------------------------------------------------
 
-#include "pch.h"
-#include "MainDlg.h"
-#include "afxdialogex.h"
-#include <winsock2.h>
-#include <ws2tcpip.h>
-#include <string>
+# include "pch.h"
+# include "resource.h"
+
+# include "MFC_TCP_Client_IP.h"
 
 #pragma comment(lib, "ws2_32.lib")
 
@@ -36,6 +34,7 @@
 
 BEGIN_MESSAGE_MAP(CMainDlg, CDialogEx)
     ON_BN_CLICKED(IDC_BUTTON_SENDNAME, &CMainDlg::OnBnClickedSendName)
+    ON_BN_CLICKED(IDC_BUTTON_CANCEL, &CMainDlg::OnBnClickedClose)
     ON_MESSAGE(WM_MYTHREAD_MESSAGE, &CMainDlg::OnThreadMessage)
 END_MESSAGE_MAP()
 
@@ -48,25 +47,46 @@ void CMainDlg::DoDataExchange(CDataExchange* pDX)
 {
     CDialogEx::DoDataExchange(pDX);
     DDX_Control(pDX, IDC_EDIT_NAME, m_NameEdit);
+    DDX_Control(pDX, IDC_EDIT_IP, m_IpEdit);
+    DDX_Control(pDX, IDC_BUTTON_SENDNAME, m_IpEdit);
+    DDX_Control(pDX, IDC_BUTTON_CANCEL, m_IpEdit);
     DDX_Control(pDX, IDC_STATIC_RESPONSE, m_ResponseLabel);
+}
+
+void CMainDlg::OnBnClickedClose()
+{
+    if (GetStyle() & DS_MODALFRAME)  // prüfe ob modal
+    EndDialog(IDC_BUTTON_CANCEL); else
+    DestroyWindow();  // modelless
+}
+void CMainDlg::PostNcDestroy() {
+    delete this;
 }
 
 void CMainDlg::OnBnClickedSendName()
 {
     CString name;
-    m_NameEdit.GetWindowTextW(name);
-    AfxBeginThread(ClientThreadProc, new CString(name));
-    m_ResponseLabel.SetWindowTextW(L"Sende...");
+    CString ip;
+
+    m_NameEdit.GetWindowTextA(name);
+    m_IpEdit.GetWindowTextA(ip);
+
+    // Werte an Thread übergeben (kombiniert als Struktur oder CString-Pointer-Array)
+    auto* params = new std::pair<CString, CString>(name, ip);
+    AfxBeginThread(ClientThreadProc, params);
+
+    m_ResponseLabel.SetWindowTextA("Sende...");
 }
 
 UINT CMainDlg::ClientThreadProc(LPVOID pParam)
 {
-    CString* namePtr = reinterpret_cast<CString*>(pParam);
-    CString name = *namePtr;
-    delete namePtr;
+    auto* params = reinterpret_cast<std::pair<CString, CString>*>(pParam);
+    CString name = params->first;
+    CString ipStr = params->second;
+    delete params;
 
     WSADATA wsaData;
-    WSAStartup(MAKEWORD(2, 2), &wsaData);
+    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) return 1;
 
     SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (sock == INVALID_SOCKET) {
@@ -77,12 +97,9 @@ UINT CMainDlg::ClientThreadProc(LPVOID pParam)
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(5555);
     
-    CString ipStr;
-    dlg->m_IpEdit.GetWindowTextW(ipStr);
     std::string ip = CT2A(ipStr);
     inet_pton(AF_INET, ip.c_str(), &serverAddr.sin_addr);
     
-
     int result = connect(sock, (sockaddr*)&serverAddr, sizeof(serverAddr));
     if (result == SOCKET_ERROR) {
         closesocket(sock);
@@ -110,7 +127,7 @@ UINT CMainDlg::ClientThreadProc(LPVOID pParam)
 LRESULT CMainDlg::OnThreadMessage(WPARAM, LPARAM lParam)
 {
     CString* str = reinterpret_cast<CString*>(lParam);
-    m_ResponseLabel.SetWindowTextW(*str);
+    m_ResponseLabel.SetWindowTextA(*str);
     delete str;
     return 0;
 }

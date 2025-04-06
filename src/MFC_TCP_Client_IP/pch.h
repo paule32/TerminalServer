@@ -20,27 +20,25 @@
 // ---------------------------------------------------------------------------------------
 #pragma once
 
-#define WM_MYTHREAD_MESSAGE (WM_USER + 100)
+// ---------------------------------------------------------------------------------------
+// Windows Socket
+// ---------------------------------------------------------------------------------------
+# include <winsock2.h>
+# include <ws2tcpip.h>
 
-class CMainDlg : public CDialogEx
-{
-public:
-    CMainDlg(CWnd* pParent = nullptr);
-#ifdef AFX_DESIGN_TIME
-    enum { IDD = IDD_MAINDIALOG };
-#endif
+// ---------------------------------------------------------------------------------------
+// Windows MFC - Microsoft Foundation Class
+// ---------------------------------------------------------------------------------------
+# include <afxwin.h>  // WICHTIG für MFC + Message Map
+# include <afxmsg_.h>
+# include <afxdialogex.h>
 
-protected:
-    virtual void DoDataExchange(CDataExchange* pDX);
-    DECLARE_MESSAGE_MAP()
+// ---------------------------------------------------------------------------------------
+// Win32API
+// ---------------------------------------------------------------------------------------
+# include <Windows.h>
 
-public:
-    afx_msg void OnBnClickedSendName();
-    afx_msg LRESULT OnThreadMessage(WPARAM wParam, LPARAM lParam);
-    static UINT ClientThreadProc(LPVOID pParam);
-
-private:
-    CEdit m_NameEdit;
-    CEdit m_IpEdit;
-    CStatic m_ResponseLabel;
-};
+// ---------------------------------------------------------------------------------------
+// std C++
+// ---------------------------------------------------------------------------------------
+# include <string>

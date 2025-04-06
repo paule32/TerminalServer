@@ -1,1 +1,4 @@
 *.bak
+src/MFC_TCP_Client_IP/zip/packed.zip
+src/MFC_TCP_Client_IP/zip/x64/MFC_TCP_Client_IP.exe
+src/MFC_TCP_Client_IP/zip/x86/MFC_TCP_Client_IP.exe
