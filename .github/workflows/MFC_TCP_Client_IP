@@ -1,0 +1,29 @@
+name: Build Visual Studio Project
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: 📥 Repository klonen
+      uses: actions/checkout@v3
+
+    - name: 🛠 Visual Studio mit MSBuild vorbereiten
+      uses: microsoft/setup-msbuild@v1.3
+
+    - name: 📦 Projekt mit MSBuild kompilieren
+      run: msbuild src/MFC_TCP_Client_IP/MFC_TCP_Client_IP.sln /p:Configuration=Release
+
+    - name: 📤 Baue Artefakt hochladen
+      uses: actions/upload-artifact@v3
+      with:
+        name: Release-Build
+        path: 'src/MFC_TCP_Client_IP/**/Release/*.exe'
+
+#https://github.com/paule32/TerminalServer/blob/main/src/MFC_TCP_Client_IP/MFC_TCP_Client_IP.sln
