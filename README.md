@@ -13,6 +13,10 @@ Dieses Projekt enthält Tools für die Arbeit mit OpenSSL, CSR-Verwaltung, TLS-V
 
 [Protokoll](https://github.com/paule32/TerminalServer/wiki/TLS_Zertifikats_Session_Doku.md)
 
+| Projekt                  | Download                     |
+|--------------------------|------------------------------|
+| MFC_TCP_Client_IP        | [2025-04-06](https://github.com/paule32/TerminalServer/actions/runs/14293449658/artifacts/2890186148) |
+
 ---
 
 # 📋 Sprachmodul – Statusübersicht
