@@ -21,7 +21,7 @@ jobs:
       run: msbuild src/MFC_TCP_Client_IP/MFC_TCP_Client_IP.sln /p:Configuration=Release
 
     - name: 📤 Baue Artefakt hochladen
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3.1.3
       with:
         name: Release-Build
         path: 'src/MFC_TCP_Client_IP/**/Release/*.exe'
