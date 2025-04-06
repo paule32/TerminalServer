@@ -5,10 +5,10 @@ Dieses Projekt enthält Tools für die Arbeit mit OpenSSL, CSR-Verwaltung, TLS-V
 
 ## 📄 Wiki-Inhalte
 
-- [Server-Architektur](server-architektur.md)
-- [Client mit Reconnect & TLS](client-reconnect.md)
-- [Zertifikatsverwaltung mit Qt5](certmanager-ui.md)
-- [OpenSSL & Test-CA Tipps](openssl-ca-tipps.md)
+- [Server-Architektur](https://github.com/paule32/TerminalServer/wiki/server-architektur.md)
+- [Client mit Reconnect & TLS](https://github.com/paule32/TerminalServer/wiki/client-reconnect.md)
+- [Zertifikatsverwaltung mit Qt5](https://github.com/paule32/TerminalServer/wiki/certmanager-ui.md)
+- [OpenSSL & Test-CA Tipps](https://github.com/paule32/TerminalServer/wiki/openssl-ca-tipps.md)
 
 
 [Protokoll](https://github.com/paule32/TerminalServer/wiki/TLS_Zertifikats_Session_Doku.md)
