@@ -23,13 +23,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r src\CertTool\exports\requirements.txt
 
-    - name: Compile .ui files to .py
-      run: |
-        mkdir -p src\CertTool\exports\ui
-        for %%f in (src\CertTool\exports\*.ui) do (
-          pyuic5 -o src\CertTool\exports\ui\ui_%%~nf.py src\CertTool\exports\%%~nxf
-        )
-
     - name: Build EXE
       run: |
         pyinstaller --noconfirm --onefile src\CertTool\exports\main.py
