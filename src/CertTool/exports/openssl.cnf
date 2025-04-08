@@ -1,0 +1,58 @@
+
+[ ca ]
+default_ca = my_ca
+
+[ my_ca ]
+dir             = data/CA
+certs           = $dir/private
+crl_dir         = $dir/crl
+new_certs_dir   = $dir/newcerts
+database        = $dir/crl/index.txt
+serial          = $dir/crl/serial
+crlnumber       = $dir/crl/crlnumber
+
+certificate     = $dir/public/ca.crt
+private_key     = $dir/private/ca.key
+RANDFILE        = $dir/private/.rand
+
+crl             = $dir/crl/crl.pem
+crl_extensions  = crl_ext
+default_crl_days= 30
+
+default_md      = sha256
+policy          = my_policy
+email_in_dn     = no
+nameopt         = default_ca
+certopt         = default_ca
+copy_extensions = copy
+
+[ my_policy ]
+countryName             = match
+stateOrProvinceName     = optional
+organizationName        = match
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+[ req ]
+default_bits        = 2048
+default_md          = sha256
+prompt              = no
+distinguished_name  = req_distinguished_name
+x509_extensions     = v3_ca
+
+[ req_distinguished_name ]
+C  = DE
+ST = Bayern
+L  = München
+O  = Testfirma GmbH
+CN = Test Root CA
+
+[ v3_ca ]
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid:always,issuer
+basicConstraints = CA:true
+keyUsage = critical, cRLSign, keyCertSign
+
+[ crl_ext ]
+authorityKeyIdentifier=keyid:always

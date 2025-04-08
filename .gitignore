@@ -2,3 +2,7 @@
 src/MFC_TCP_Client_IP/zip/packed.zip
 src/MFC_TCP_Client_IP/zip/x64/MFC_TCP_Client_IP.exe
 src/MFC_TCP_Client_IP/zip/x86/MFC_TCP_Client_IP.exe
+/src/CertTool/1
+/src/CertTool/exports/build
+/src/CertTool/exports/data
+/src/CertTool/exports/dist
