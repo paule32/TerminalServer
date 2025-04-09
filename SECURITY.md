@@ -16,4 +16,4 @@ Sie verwenden die Programme auf Eignes Risiko !!!
 ## Reporting einer Vulnerability
 
 Fehlermeldungen können auf folgende E-Mail eingereicht werden:<br>
-paule32.jk@gmaol.com
+paule32.jk@gmail.com
