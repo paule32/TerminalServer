@@ -6,3 +6,5 @@ src/MFC_TCP_Client_IP/zip/x86/MFC_TCP_Client_IP.exe
 /src/CertTool/exports/build
 /src/CertTool/exports/data
 /src/CertTool/exports/dist
+src/CertTool/exports/packed.zip
+src/CertTool/exports/main.exe
