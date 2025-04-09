@@ -33,5 +33,5 @@ jobs:
       with:
         name: CertTool_Build
         path: |
-            .\LICENSE
-            src\CertTool\exports\dist\main.exe
+            ./LICENSE
+            dist/main.exe
