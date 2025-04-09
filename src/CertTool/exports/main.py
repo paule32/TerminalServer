@@ -40,8 +40,16 @@ VERSION = "1.0.0"
 UPDATE_URL = "http://domain.local/version.txt"  # Lokales Netz
 
 DATA_DIR = "data"
-CA_KEY = os.path.join(DATA_DIR, "ca", "ca.key")
-CA_CRT = os.path.join(DATA_DIR, "ca", "ca.crt")
+
+CA_KEY = os.path.join(DATA_DIR, "CA", ".")
+CA_KEY = os.path.join(CA_KEY, "private", "ca.key")
+#
+CA_CRT = os.path.join(DATA_DIR, "CA", ".")
+CA_CRT = os.path.join(CA_CRT, "public", "ca.crt")
+
+print("---> " + CA_KEY)
+print("---> " + CA_CRT)
+
 CSR_DIR = os.path.join(DATA_DIR, "requests")
 CLIENT_DIR = os.path.join(DATA_DIR, "clients")
 DB_PATH = os.path.join(DATA_DIR, "clients.json")
@@ -49,8 +57,17 @@ CRL_PATH = os.path.join(DATA_DIR, "ca", "crl.pem")
 
 os.makedirs(CLIENT_DIR, exist_ok=True)
 
+def find_csr_files(root_dir):
+    csr_files = []
+    for dirpath, dirnames, filenames in os.walk(root_dir):
+        for filename in filenames:
+            if filename.lower().endswith('.csr'):
+                full_path = os.path.join(dirpath, filename)
+                csr_files.append(full_path)
+    return csr_files
+
 def load_csrs():
-    return [f for f in os.listdir(CSR_DIR) if f.endswith(".csr")]
+    return find_csr_files("data/CA")
 
 def update_db(cn, start, end, status, revoked):
     db = {}
@@ -80,7 +97,7 @@ def sign_csr(csr_filename, days=0, minutes=30):
     
     cmd = [
         "openssl", "x509", "-req",
-        "-in", os.path.join(CSR_DIR, csr_filename),
+        "-in", csr_filename,
         "-CA", CA_CRT, "-CAkey", CA_KEY,
         "-CAcreateserial",
         "-out", crt_path,
@@ -300,7 +317,9 @@ class CertManager(QMainWindow):
     
     def load_csrs(self):
         self.tableCSRs.setRowCount(0)
-        csrs = self.load_csrs()
+        self.tableCSRs.setColumnCount(1)
+        self.tableCSRs.setColumnWidth(0, 420)
+        csrs = load_csrs()
         for row, filename in enumerate(csrs):
             self.tableCSRs.insertRow(row)
             self.tableCSRs.setItem(row, 0, QTableWidgetItem(filename))
@@ -312,7 +331,7 @@ class CertManager(QMainWindow):
             return
         filename = self.tableCSRs.item(selected, 0).text()
         try:
-            self.sign_csr(filename)
+            sign_csr(filename)
             QMessageBox.information(self, "Erfolg", f"{filename} wurde signiert.")
             self.refresh_clients()
         except Exception as e:
