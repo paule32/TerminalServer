@@ -50,10 +50,10 @@ CA_CRT = os.path.join(CA_CRT, "public", "ca.crt")
 print("---> " + CA_KEY)
 print("---> " + CA_CRT)
 
-CSR_DIR = os.path.join(DATA_DIR, "requests")
+CSR_DIR    = os.path.join(DATA_DIR, "requests")
 CLIENT_DIR = os.path.join(DATA_DIR, "clients")
-DB_PATH = os.path.join(DATA_DIR, "clients.json")
-CRL_PATH = os.path.join(DATA_DIR, "ca", "crl.pem")
+DB_PATH    = os.path.join(DATA_DIR, "clients.json")
+CRL_PATH   = os.path.join(DATA_DIR, "ca", "crl.pem")
 
 os.makedirs(CLIENT_DIR, exist_ok=True)
 
